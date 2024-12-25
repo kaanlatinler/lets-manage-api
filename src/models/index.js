@@ -16,6 +16,7 @@ const Products = require("./Products")(sequelize, DataTypes);
 const Roles = require("./Roles")(sequelize, DataTypes);
 const Tables = require("./Tables")(sequelize, DataTypes);
 const TableCategories = require("./TableCategories")(sequelize, DataTypes);
+const OrderDetails = require("./OrderDetails")(sequelize, DataTypes);
 
 // İlişkiler
 
@@ -64,12 +65,15 @@ Orders.belongsTo(Tables, { foreignKey: "TableId" });
 Tables.hasMany(Orders, { foreignKey: "TableId" });
 
 // Siparişler ile Ürünler (N:1)
-Orders.belongsTo(Products, { foreignKey: "ProductId" });
-Products.hasMany(Orders, { foreignKey: "ProductId" });
+OrderDetails.belongsTo(Products, { foreignKey: "ProductId" });
+Products.hasMany(OrderDetails, { foreignKey: "ProductId" });
 
 // Siparişler ile Sipariş Durumları (N:1)
 Orders.belongsTo(OrderStatus, { foreignKey: "StatusId" });
 OrderStatus.hasMany(Orders, { foreignKey: "StatusId" });
+
+Orders.hasMany(OrderDetails, { foreignKey: "OrderId" });
+OrderDetails.belongsTo(Orders, { foreignKey: "OrderId" });
 
 // Ödemeler ile İşletmeler (N:1)
 Payments.belongsTo(Businesses, { foreignKey: "BusinessId" });
@@ -91,6 +95,7 @@ module.exports = {
   Genders,
   Orders,
   OrderStatus,
+  OrderDetails,
   Payments,
   ProductCategories,
   Products,

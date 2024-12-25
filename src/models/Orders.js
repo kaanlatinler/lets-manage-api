@@ -21,14 +21,6 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: { msg: "OrderTime is required" },
       },
     },
-    Quantity: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notNull: { msg: "Quantity is required" },
-        notEmpty: { msg: "Quantity is required" },
-      },
-    },
     TotalAmount: {
       type: DataTypes.DECIMAL,
       allowNull: false,
@@ -51,14 +43,6 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: { msg: "TableId is required" },
         notEmpty: { msg: "TableId is required" },
-      },
-    },
-    ProductId: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      validate: {
-        notNull: { msg: "ProductId is required" },
-        notEmpty: { msg: "ProductId is required" },
       },
     },
     StatusId: {

@@ -47,6 +47,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: { msg: "Password is required" },
       },
     },
+    Point: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     RoleId: {
       type: DataTypes.UUID,
       allowNull: true,
